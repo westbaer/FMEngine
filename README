@@ -1,0 +1,14 @@
+=== What's FMEngine? ===
+
+FMEngine is an open-source Objective-C framework for the last.fm API. You can use it in your iPhone and Mac OS X applications.
+The source is released under the terms of the MIT License. The full license text can be found in the file LICENSE. 
+
+FMEngine does *not* parse the output of the last.fm API (BYOP - Bring your own parser). It returns an NSData object that contains either XML or JSON output. Therefore it handles authentication, parameter signing, etc.
+
+It's in a very early alpha stage and there's still a lot to do, but hey, it's working!
+
+=== Credits ===
+
+Thanks to Sam Steele (c99koder) for the NSString+MD5 category and Matt Gemmell for the NSString+UUID category.
+
+
