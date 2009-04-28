@@ -31,7 +31,7 @@ static NSInteger sortAlpha(NSString *n1, NSString *n2, void *context) {
 
 - (void)performMethod:(NSString *)method withTarget:(id)target withParameters:(NSDictionary *)params andAction:(SEL)callback useSignature:(BOOL)useSig httpMethod:(NSString *)httpMethod {
 	NSString *dataSig;
-	NSURL *dataURL;
+	NSMutableURLRequest *request;
 	NSMutableDictionary *tempDict = [[NSMutableDictionary alloc] initWithDictionary:params];
 	
 	if(useSig == TRUE) {
@@ -48,8 +48,15 @@ static NSInteger sortAlpha(NSString *n1, NSString *n2, void *context) {
 	params = [NSDictionary dictionaryWithDictionary:tempDict];
 	[tempDict release];
 
-	dataURL = [self generateURLFromDictionary:params];	
-	NSURLRequest *request = [NSURLRequest requestWithURL:dataURL];
+	if(![httpMethod isPOST]) {
+		NSURL *dataURL = [self generateURLFromDictionary:params];
+		request = [NSURLRequest requestWithURL:dataURL];
+	} else {
+		request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:_LASTFM_BASEURL_]];
+		[request setHTTPMethod:httpMethod];
+		[request setHTTPBody:[[self generatePOSTBodyFromDictionary:params] dataUsingEncoding:NSUTF8StringEncoding]];
+	}
+	
 	FMEngineURLConnection *connection = [[FMEngineURLConnection alloc] initWithRequest:request];
 	connection._target = target;
 	connection._selector = callback;
@@ -76,6 +83,7 @@ static NSInteger sortAlpha(NSString *n1, NSString *n2, void *context) {
 	[tempDict setObject:@"json" forKey:@"format"];
 	#endif
 	
+	[tempDict setObject:method forKey:@"method"];
 	params = [NSDictionary dictionaryWithDictionary:tempDict];
 	[tempDict release];
 	
