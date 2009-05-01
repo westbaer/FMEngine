@@ -26,6 +26,7 @@ static NSInteger sortAlpha(NSString *n1, NSString *n2, void *context) {
 
 - (NSString *)generateAuthTokenFromUsername:(NSString *)username password:(NSString *)password {
 	NSString *unencryptedToken = [NSString stringWithFormat:@"%@%@", username, [password md5sum]];
+	NSLog(@"%@", unencryptedToken);
 	return [unencryptedToken md5sum];
 }
 
@@ -34,8 +35,9 @@ static NSInteger sortAlpha(NSString *n1, NSString *n2, void *context) {
 	NSMutableURLRequest *request;
 	NSMutableDictionary *tempDict = [[NSMutableDictionary alloc] initWithDictionary:params];
 	
+	[tempDict setObject:method forKey:@"method"];
 	if(useSig == TRUE) {
-		dataSig = [self generateSignatureFromDictionary:params];
+		dataSig = [self generateSignatureFromDictionary:tempDict];
 		
 		[tempDict setObject:dataSig forKey:@"api_sig"];
 	}
@@ -47,7 +49,6 @@ static NSInteger sortAlpha(NSString *n1, NSString *n2, void *context) {
 
 	#endif
 	
-	[tempDict setObject:method forKey:@"method"];
 	params = [NSDictionary dictionaryWithDictionary:tempDict];
 	[tempDict release];
 
@@ -76,8 +77,9 @@ static NSInteger sortAlpha(NSString *n1, NSString *n2, void *context) {
 	NSMutableURLRequest *request;
 	NSMutableDictionary *tempDict = [[NSMutableDictionary alloc] initWithDictionary:params];
 	
+	[tempDict setObject:method forKey:@"method"];
 	if(useSig == TRUE) {
-		dataSig = [self generateSignatureFromDictionary:params];
+		dataSig = [self generateSignatureFromDictionary:tempDict];
 		
 		[tempDict setObject:dataSig forKey:@"api_sig"];
 	}
