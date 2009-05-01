@@ -41,7 +41,10 @@ static NSInteger sortAlpha(NSString *n1, NSString *n2, void *context) {
 	}
 	
 	#ifdef _USE_JSON_
-	[tempDict setObject:@"json" forKey:@"format"];
+	if(![httpMethod isPOST]) {
+		[tempDict setObject:@"json" forKey:@"format"];
+	}
+
 	#endif
 	
 	[tempDict setObject:method forKey:@"method"];
@@ -52,7 +55,7 @@ static NSInteger sortAlpha(NSString *n1, NSString *n2, void *context) {
 		NSURL *dataURL = [self generateURLFromDictionary:params];
 		request = [NSURLRequest requestWithURL:dataURL];
 	} else {
-		request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:_LASTFM_BASEURL_]];
+		request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[_LASTFM_BASEURL_ stringByAppendingString:@"?format=json"]]];
 		[request setHTTPMethod:httpMethod];
 		[request setHTTPBody:[[self generatePOSTBodyFromDictionary:params] dataUsingEncoding:NSUTF8StringEncoding]];
 	}
@@ -80,7 +83,9 @@ static NSInteger sortAlpha(NSString *n1, NSString *n2, void *context) {
 	}
 	
 	#ifdef _USE_JSON_
-	[tempDict setObject:@"json" forKey:@"format"];
+	if(![httpMethod isPOST]) {
+		[tempDict setObject:@"json" forKey:@"format"];
+	}
 	#endif
 	
 	[tempDict setObject:method forKey:@"method"];
@@ -91,7 +96,7 @@ static NSInteger sortAlpha(NSString *n1, NSString *n2, void *context) {
 		NSURL *dataURL = [self generateURLFromDictionary:params];
 		request = [NSURLRequest requestWithURL:dataURL];
 	} else {
-		request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:_LASTFM_BASEURL_]];
+		request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[_LASTFM_BASEURL_ stringByAppendingString:@"?format=json"]]];
 		[request setHTTPMethod:httpMethod];
 		[request setHTTPBody:[[self generatePOSTBodyFromDictionary:params] dataUsingEncoding:NSUTF8StringEncoding]];
 	}
