@@ -26,7 +26,6 @@ static NSInteger sortAlpha(NSString *n1, NSString *n2, void *context) {
 
 - (NSString *)generateAuthTokenFromUsername:(NSString *)username password:(NSString *)password {
 	NSString *unencryptedToken = [NSString stringWithFormat:@"%@%@", username, [password md5sum]];
-	NSLog(@"%@", unencryptedToken);
 	return [unencryptedToken md5sum];
 }
 
