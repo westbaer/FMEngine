@@ -8,16 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "NSString+FMEngine.h"
+#import "FMCallback.h"
 
 @interface FMEngineURLConnection : NSURLConnection {
 	NSString *_id;
 	NSMutableData *_receivedData;
-	id _target;
-	SEL _selector;
+	FMCallback *sCallback;
 }
 
-@property (nonatomic, assign) id _target;
-@property (nonatomic, assign) SEL _selector;
+@property (nonatomic, retain) FMCallback *sCallback;
 
 - (id)initWithRequest:(NSURLRequest *)request delegate:(id)delegate;
 - (id)initWithRequest:(NSURLRequest *)request;

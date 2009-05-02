@@ -22,21 +22,11 @@
 
 @class FMEngine;
 
-@protocol FMEngineDelegate <NSObject>
-@required
-- (void)engine:(FMEngine *)engine didFailWithError:(NSError *)error;
-@end
-
 @interface FMEngine : NSObject {
-	id <FMEngineDelegate> _delegate;
 	NSMutableData *receivedData;
 	NSMutableDictionary *connections;
-
 }
 
-@property (nonatomic, retain) id <FMEngineDelegate> delegate;
-
-- (id)initWithDelegate:(id<FMEngineDelegate>)theDelegate;
 
 - (NSString *)generateAuthTokenFromUsername:(NSString *)username password:(NSString *)password;
 - (NSString *)generateSignatureFromDictionary:(NSDictionary *)dict;
@@ -44,7 +34,7 @@
 - (NSURL *)generateURLFromDictionary:(NSDictionary *)dict;
 
 - (void)performMethod:(NSString *)method withTarget:(id)target withParameters:(NSDictionary *)params andAction:(SEL)callback useSignature:(BOOL)useSig httpMethod:(NSString *)httpMethod;
-- (NSData *)dataForMethod:(NSString *)method withParameters:(NSDictionary *)params useSignature:(BOOL)useSig httpMethod:(NSString *)httpMethod;
+- (NSData *)dataForMethod:(NSString *)method withParameters:(NSDictionary *)params useSignature:(BOOL)useSig httpMethod:(NSString *)httpMethod error:(NSError *)err;
 
 
 @end

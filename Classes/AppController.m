@@ -11,18 +11,15 @@
 @implementation AppController
 
 - (void)awakeFromNib {
-	fmEngine = [[FMEngine alloc] initWithDelegate:self];
+	fmEngine = [[FMEngine alloc] init];
 	NSString *authToken = [fmEngine generateAuthTokenFromUsername:@"yourusername" password:@"yourpassword"];
 	NSDictionary *urlDict = [NSDictionary dictionaryWithObjectsAndKeys:@"yourusername", @"username", authToken, @"authToken", _LASTFM_API_KEY_, @"api_key", nil, nil];
 	[fmEngine performMethod:@"auth.getMobileSession" withTarget:self withParameters:urlDict andAction:@selector(loginCallback:data:) useSignature:YES httpMethod:POST_TYPE];	
 }
 
-- (void)loginCallback:(NSString *)identifier data:(NSData *)data {
+- (void)loginCallback:(NSString *)identifier data:(id)data {
+	// data is either NSData or NSError
 	NSLog(@"Got Data (%@): %@", identifier, data);
-}
-
-- (void)engine:(FMEngine *)engine didFailWithError:(NSError *)error {
-
 }
 
 @end

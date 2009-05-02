@@ -11,7 +11,7 @@
 
 @implementation FMEngineURLConnection
 
-@synthesize _target, _selector;
+@synthesize sCallback;
 
 - (id)initWithRequest:(NSURLRequest *)request delegate:(id)delegate {
 	if (self = [super initWithRequest:request delegate:delegate]) {
@@ -39,12 +39,16 @@
 
 - (void)connection:(FMEngineURLConnection *)connection didFailWithError:(NSError *)error {
 	// TODO: Error Handling
+	[sCallback setUserInfo:error];
+	[sCallback fire];
+	
     [connection release];
     [_receivedData release];
 }
 
 - (void)connectionDidFinishLoading:(FMEngineURLConnection *)connection {
-	[_target performSelector:_selector withObject:_id withObject:_receivedData];
+	[sCallback setUserInfo:_receivedData];
+	[sCallback fire];
 	
     [connection release];
     [_receivedData release];
@@ -63,6 +67,8 @@
 }
 
 - (void)dealloc {
+	[sCallback release];
+
 	[super dealloc];
 }
 

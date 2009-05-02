@@ -14,6 +14,7 @@
 		37CD54260FA7B52100C473F4 /* NHDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CD54210FA7B52100C473F4 /* NHDebug.m */; };
 		37CD54270FA7B52100C473F4 /* NSString+FMEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CD54230FA7B52100C473F4 /* NSString+FMEngine.m */; };
 		37CD542D0FA7B55C00C473F4 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CD542C0FA7B55C00C473F4 /* AppController.m */; };
+		37ECBC8D0FAC7EA100652211 /* FMCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 37ECBC8C0FAC7EA100652211 /* FMCallback.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -39,6 +40,8 @@
 		37CD54230FA7B52100C473F4 /* NSString+FMEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+FMEngine.m"; path = "Classes/Framework/NSString+FMEngine.m"; sourceTree = "<group>"; };
 		37CD542B0FA7B55C00C473F4 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppController.h; path = Classes/AppController.h; sourceTree = "<group>"; };
 		37CD542C0FA7B55C00C473F4 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppController.m; path = Classes/AppController.m; sourceTree = "<group>"; };
+		37ECBC8B0FAC7EA100652211 /* FMCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMCallback.h; path = Classes/Framework/FMCallback.h; sourceTree = "<group>"; };
+		37ECBC8C0FAC7EA100652211 /* FMCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMCallback.m; path = Classes/Framework/FMCallback.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* FMEngine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FMEngine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -136,6 +139,8 @@
 		37CD54130FA7B45B00C473F4 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				37ECBC8B0FAC7EA100652211 /* FMCallback.h */,
+				37ECBC8C0FAC7EA100652211 /* FMCallback.m */,
 				37CD541C0FA7B52100C473F4 /* FMEngine.h */,
 				37CD541D0FA7B52100C473F4 /* FMEngine.m */,
 				37CD54200FA7B52100C473F4 /* NHDebug.h */,
@@ -209,6 +214,7 @@
 				37CD54260FA7B52100C473F4 /* NHDebug.m in Sources */,
 				37CD54270FA7B52100C473F4 /* NSString+FMEngine.m in Sources */,
 				37CD542D0FA7B55C00C473F4 /* AppController.m in Sources */,
+				37ECBC8D0FAC7EA100652211 /* FMCallback.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

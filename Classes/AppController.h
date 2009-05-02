@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "FMEngine.h"
 
-@interface AppController : NSObject <FMEngineDelegate> {
+@interface AppController : NSObject {
 	FMEngine *fmEngine;
 }
 

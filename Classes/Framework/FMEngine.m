@@ -7,18 +7,17 @@
 //
 
 #import "FMEngine.h"
+#import "FMCallback.h"
 #import "FMEngineURLConnection.h"
 
 @implementation FMEngine
-@synthesize delegate = _delegate;
 
 static NSInteger sortAlpha(NSString *n1, NSString *n2, void *context) {
 	return [n1 caseInsensitiveCompare:n2];
 }
 
-- (id)initWithDelegate:(id<FMEngineDelegate>)theDelegate {
+- (id)init {
 	if (self = [super init]) {
-		_delegate = [theDelegate retain];
 		connections = [[NSMutableDictionary alloc] init];
 	}
 	return self;	
@@ -65,17 +64,17 @@ static NSInteger sortAlpha(NSString *n1, NSString *n2, void *context) {
 	}
 	
 	FMEngineURLConnection *connection = [[FMEngineURLConnection alloc] initWithRequest:request];
-	connection._target = target;
-	connection._selector = callback;
+	NSString *connectionId = [connection identifier];
+	connection.sCallback = [FMCallback callbackWithTarget:target action:callback userInfo:nil object:connectionId];
 	
 	if(connection) {
-		[connections setObject:connection forKey:[connection identifier]];
+		[connections setObject:connection forKey:connectionId];
 		[connection release];
 	}
 
 }
 
-- (NSData *)dataForMethod:(NSString *)method withParameters:(NSDictionary *)params useSignature:(BOOL)useSig httpMethod:(NSString *)httpMethod {
+- (NSData *)dataForMethod:(NSString *)method withParameters:(NSDictionary *)params useSignature:(BOOL)useSig httpMethod:(NSString *)httpMethod error:(NSError *)err {
 	NSString *dataSig;
 	NSMutableURLRequest *request;
 	NSMutableDictionary *tempDict = [[NSMutableDictionary alloc] initWithDictionary:params];
@@ -111,7 +110,7 @@ static NSInteger sortAlpha(NSString *n1, NSString *n2, void *context) {
 		[request setHTTPBody:[[self generatePOSTBodyFromDictionary:params] dataUsingEncoding:NSUTF8StringEncoding]];
 	}
 	
-	NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+	NSData *returnData = [FMEngineURLConnection sendSynchronousRequest:request returningResponse:nil error:&err];
 	return returnData;
 }
 
@@ -176,8 +175,7 @@ static NSInteger sortAlpha(NSString *n1, NSString *n2, void *context) {
 }
 
 - (void)dealloc {
-	[_delegate release];
-	_delegate = nil;
+
 	[[connections allValues] makeObjectsPerformSelector:@selector(cancel)];
     [connections release];
 	[super dealloc];
