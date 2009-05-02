@@ -55,7 +55,11 @@ static NSInteger sortAlpha(NSString *n1, NSString *n2, void *context) {
 		NSURL *dataURL = [self generateURLFromDictionary:params];
 		request = [NSURLRequest requestWithURL:dataURL];
 	} else {
+		#ifdef _USE_JSON_
 		request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[_LASTFM_BASEURL_ stringByAppendingString:@"?format=json"]]];
+		#else 
+		request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:_LASTFM_BASEURL_]];
+		#endif
 		[request setHTTPMethod:httpMethod];
 		[request setHTTPBody:[[self generatePOSTBodyFromDictionary:params] dataUsingEncoding:NSUTF8StringEncoding]];
 	}
@@ -97,7 +101,12 @@ static NSInteger sortAlpha(NSString *n1, NSString *n2, void *context) {
 		NSURL *dataURL = [self generateURLFromDictionary:params];
 		request = [NSURLRequest requestWithURL:dataURL];
 	} else {
+		#ifdef _USE_JSON_
 		request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[_LASTFM_BASEURL_ stringByAppendingString:@"?format=json"]]];
+		#else 
+		request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:_LASTFM_BASEURL_]];
+		#endif
+		
 		[request setHTTPMethod:httpMethod];
 		[request setHTTPBody:[[self generatePOSTBodyFromDictionary:params] dataUsingEncoding:NSUTF8StringEncoding]];
 	}
