@@ -13,10 +13,10 @@
 @interface FMEngineURLConnection : NSURLConnection {
 	NSString *_id;
 	NSMutableData *_receivedData;
-	FMCallback *sCallback;
+	FMCallback *callback;
 }
 
-@property (nonatomic, retain) FMCallback *sCallback;
+@property (nonatomic, retain) FMCallback *callback;
 
 - (id)initWithRequest:(NSURLRequest *)request delegate:(id)delegate;
 - (id)initWithRequest:(NSURLRequest *)request;
