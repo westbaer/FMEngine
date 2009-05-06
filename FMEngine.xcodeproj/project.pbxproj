@@ -11,7 +11,6 @@
 		37CD54190FA7B50D00C473F4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37CD54180FA7B50D00C473F4 /* Security.framework */; };
 		37CD54240FA7B52100C473F4 /* FMEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CD541D0FA7B52100C473F4 /* FMEngine.m */; };
 		37CD54250FA7B52100C473F4 /* FMEngineURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CD541F0FA7B52100C473F4 /* FMEngineURLConnection.m */; };
-		37CD54260FA7B52100C473F4 /* NHDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CD54210FA7B52100C473F4 /* NHDebug.m */; };
 		37CD54270FA7B52100C473F4 /* NSString+FMEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CD54230FA7B52100C473F4 /* NSString+FMEngine.m */; };
 		37CD542D0FA7B55C00C473F4 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CD542C0FA7B55C00C473F4 /* AppController.m */; };
 		37ECBC8D0FAC7EA100652211 /* FMCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 37ECBC8C0FAC7EA100652211 /* FMCallback.m */; };
@@ -34,8 +33,6 @@
 		37CD541D0FA7B52100C473F4 /* FMEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMEngine.m; path = Classes/Framework/FMEngine.m; sourceTree = "<group>"; };
 		37CD541E0FA7B52100C473F4 /* FMEngineURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMEngineURLConnection.h; path = Classes/Framework/FMEngineURLConnection.h; sourceTree = "<group>"; };
 		37CD541F0FA7B52100C473F4 /* FMEngineURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMEngineURLConnection.m; path = Classes/Framework/FMEngineURLConnection.m; sourceTree = "<group>"; };
-		37CD54200FA7B52100C473F4 /* NHDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NHDebug.h; path = Classes/Framework/NHDebug.h; sourceTree = "<group>"; };
-		37CD54210FA7B52100C473F4 /* NHDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NHDebug.m; path = Classes/Framework/NHDebug.m; sourceTree = "<group>"; };
 		37CD54220FA7B52100C473F4 /* NSString+FMEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+FMEngine.h"; path = "Classes/Framework/NSString+FMEngine.h"; sourceTree = "<group>"; };
 		37CD54230FA7B52100C473F4 /* NSString+FMEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+FMEngine.m"; path = "Classes/Framework/NSString+FMEngine.m"; sourceTree = "<group>"; };
 		37CD542B0FA7B55C00C473F4 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppController.h; path = Classes/AppController.h; sourceTree = "<group>"; };
@@ -143,8 +140,6 @@
 				37ECBC8C0FAC7EA100652211 /* FMCallback.m */,
 				37CD541C0FA7B52100C473F4 /* FMEngine.h */,
 				37CD541D0FA7B52100C473F4 /* FMEngine.m */,
-				37CD54200FA7B52100C473F4 /* NHDebug.h */,
-				37CD54210FA7B52100C473F4 /* NHDebug.m */,
 				37CD54220FA7B52100C473F4 /* NSString+FMEngine.h */,
 				37CD54230FA7B52100C473F4 /* NSString+FMEngine.m */,
 				37CD541E0FA7B52100C473F4 /* FMEngineURLConnection.h */,
@@ -211,7 +206,6 @@
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				37CD54240FA7B52100C473F4 /* FMEngine.m in Sources */,
 				37CD54250FA7B52100C473F4 /* FMEngineURLConnection.m in Sources */,
-				37CD54260FA7B52100C473F4 /* NHDebug.m in Sources */,
 				37CD54270FA7B52100C473F4 /* NSString+FMEngine.m in Sources */,
 				37CD542D0FA7B55C00C473F4 /* AppController.m in Sources */,
 				37ECBC8D0FAC7EA100652211 /* FMCallback.m in Sources */,

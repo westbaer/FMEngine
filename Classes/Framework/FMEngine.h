@@ -7,14 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NHDebug.h"
 #import "NSString+FMEngine.h"
 
 #define _LASTFM_API_KEY_ @"YOUR_API_KEY"
 #define _LASTFM_SECRETK_ @"YOUR_SECRET_KEY"
 #define _LASTFM_BASEURL_ @"http://ws.audioscrobbler.com/2.0/"
 
-// Uncomment to use XML
+// Comment the next line to use XML
 #define _USE_JSON_ 1
 
 #define POST_TYPE	@"POST"
