@@ -5,6 +5,20 @@ The source is released under the terms of the MIT License. The full license text
 
 FMEngine does *not* parse the output of the last.fm API (BYOP - Bring your own parser). It returns an NSData object that contains either XML or JSON output. Therefore it handles authentication, parameter signing, etc.
 
+== Adding FMEngine to your Xcode project ==
+
+1. Clone the FMEngine repository: git://github.com/westbaer/FMEngine.git
+
+2. Add *all* files in the Classes/Framework directory to your project.
+
+3. Get your API Key + Secret Key from last.fm and enter it in FMEngine.h (_LASTFM_API_KEY_, _LASTFM_SECRETK_).
+
+4. Comment out the line "#define _USE_JSON_ 1" if you prefer XML over JSON.
+
+5. Add 'Security.framework' to your project.
+
+6. Start using FMEngine. Have fun!
+
 === Reference ==
 
 Asynchronous API Requests
@@ -27,3 +41,10 @@ Authentication Token
 Thanks to Sam Steele (c99koder) for the NSString+MD5 category and Matt Gemmell for the NSString+UUID category.
 
 
+I hope you enjoy using FMEngine! :)
+
+Cheers, 
+Nicolas Haunold
+
+Feedback: 	westbaer [at] gmail [dot] com
+Twitter: 	http://twitter.com/_westbaer_
