@@ -148,8 +148,8 @@ static NSInteger sortAlpha(NSString *n1, NSString *n2, void *context) {
 		}
 	}
 	
-	
-	NSURL *url = [NSURL URLWithString:rawURL];
+	NSString *encodedURL = [(NSString *)rawURL stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+	NSURL *url = [NSURL URLWithString:encodedURL];
 	[rawURL release];
 	[aMutableArray release];
 	
