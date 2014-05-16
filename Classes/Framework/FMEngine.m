@@ -55,9 +55,9 @@ static NSInteger sortAlpha(NSString *n1, NSString *n2, void *context) {
 		request = [NSURLRequest requestWithURL:dataURL];
 	} else {
 		#ifdef _USE_JSON_
-		request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[_LASTFM_BASEURL_ stringByAppendingString:@"?format=json"]]];
+		request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[_LASTFM_BASEURL_ stringByAppendingString:@"?format=json"]]];
 		#else 
-		request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:_LASTFM_BASEURL_]];
+		request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:_LASTFM_BASEURL_]];
 		#endif
 		[request setHTTPMethod:httpMethod];
 		[request setHTTPBody:[[self generatePOSTBodyFromDictionary:params] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -74,7 +74,7 @@ static NSInteger sortAlpha(NSString *n1, NSString *n2, void *context) {
 
 }
 
-- (NSData *)dataForMethod:(NSString *)method withParameters:(NSDictionary *)params useSignature:(BOOL)useSig httpMethod:(NSString *)httpMethod error:(NSError *)err {
+- (NSData *)dataForMethod:(NSString *)method withParameters:(NSDictionary *)params useSignature:(BOOL)useSig httpMethod:(NSString *)httpMethod error:(NSError **)err {
 	NSString *dataSig;
 	NSMutableURLRequest *request;
 	NSMutableDictionary *tempDict = [[NSMutableDictionary alloc] initWithDictionary:params];
@@ -101,16 +101,16 @@ static NSInteger sortAlpha(NSString *n1, NSString *n2, void *context) {
 		request = [NSURLRequest requestWithURL:dataURL];
 	} else {
 		#ifdef _USE_JSON_
-		request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[_LASTFM_BASEURL_ stringByAppendingString:@"?format=json"]]];
+		request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[_LASTFM_BASEURL_ stringByAppendingString:@"?format=json"]]];
 		#else 
-		request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:_LASTFM_BASEURL_]];
+		request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:_LASTFM_BASEURL_]];
 		#endif
 		
 		[request setHTTPMethod:httpMethod];
 		[request setHTTPBody:[[self generatePOSTBodyFromDictionary:params] dataUsingEncoding:NSUTF8StringEncoding]];
 	}
 	
-	NSData *returnData = [FMEngineURLConnection sendSynchronousRequest:request returningResponse:nil error:&err];
+	NSData *returnData = [FMEngineURLConnection sendSynchronousRequest:request returningResponse:nil error:err];
 	return returnData;
 }
 
